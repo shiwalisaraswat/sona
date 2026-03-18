@@ -15,18 +15,38 @@
                             <div class="check-date">
                                 <label for="date-in">Name</label>
                                 <input type="text" name="name" value="{{ old('name') }}">
+                                @error('name')
+                                    <span class="error-message">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="check-date">
                                 <label for="date-out">Email</label>
                                 <input type="text" name="email" value="{{ old('email') }}">
+                                @error('email')
+                                    <span class="error-message">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="check-date">
                                 <label for="guest">Password</label>
                                 <input type="password" name="password" value="{{ old('password') }}">
+                                @error('password')
+                                    <span class="error-message">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="check-date">
                                 <label for="room">Confirm Password </label>
                                 <input type="password" name="password_confirmation" value="{{ old('password_confirmation') }}">
+                                @error('password_confirmation')
+                                    <span class="error-message">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <button type="submit">Submit</button>
                         </form>
