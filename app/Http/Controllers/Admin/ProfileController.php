@@ -74,7 +74,8 @@ class ProfileController extends Controller
         $admin->email = $validated['email'];
         $admin->save();
 
-        return Redirect::route('admin.profile.edit')->with('status', 'profile-updated');
+        // return Redirect::route('admin.profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('admin.profile.edit')->with('success', 'Profile updated successfully!');
     }
 
 

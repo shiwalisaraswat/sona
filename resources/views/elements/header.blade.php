@@ -58,7 +58,14 @@
                                     </li>
                                     <li><a href="{{ route('cms.blog') }}">News</a></li>
                                     <li><a href="{{ route('cms.contact') }}">Contact</a></li>
-                                    <li><a href="#"><i class="fa fa-user"></i></a>
+                                    <li>
+                                        <a href="{{ route('profile.edit') }}">
+                                            @auth
+                                                {{ auth()->user()->email }}
+                                            @else
+                                                <i class="fa fa-user"></i>
+                                            @endauth
+                                        </a>
                                         <ul class="dropdown">
                                             @guest
                                                 <li><a href="{{ route('login') }}">Login</a></li>
@@ -67,8 +74,8 @@
 
                                             @auth
                                                 <li><a href="{{ route('profile.edit') }}">Profile</a></li>
-                                                <li><a href="{{-- route('change.password') --}}">Change Password</a>
-                                                </li>
+                                                {{-- <li><a href="{{ route('change.password') }}">Change Password</a>
+                                                </li> --}}
                                                 <li><hr class="dropdown-divider"></li>
                                                 <li>
                                                     <form method="POST" action="{{ route('logout') }}">

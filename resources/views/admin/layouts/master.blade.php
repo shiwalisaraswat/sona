@@ -21,9 +21,18 @@
     <link rel="stylesheet" href="{{ asset('public/admin/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('public/admin/css/developer.css') }}">
     <!-- End layout styles -->
+
+    <!-- Toastr for this page(Order is important) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <!-- End Toastr for this page -->
+
     <link rel="shortcut icon" href="{{ asset('public/admin/assets/images/favicon.png') }}" />
   </head>
   <body>
+    @include('admin.elements.toastr_flash')
+
     <div class="container-scroller">
       <!-- partial:../../partials/_navbar.html -->
       @include('admin.elements.top_navbar')

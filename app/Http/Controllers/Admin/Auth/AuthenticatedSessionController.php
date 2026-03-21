@@ -28,7 +28,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('admin.dashboard', absolute: false))->with('status', 'logged-in');
+        // return redirect()->intended(route('admin.dashboard', absolute: false))->with('status', 'logged-in');
+        return redirect()->intended(route('admin.dashboard', absolute: false))->with('success', 'You have logged in successfully!');
     }
 
     /**
@@ -42,6 +43,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/admin');
+        // return redirect('/admin');
+        return redirect('/admin')->with('success', 'You have logged out successfully!');
     }
 }

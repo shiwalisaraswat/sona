@@ -5,7 +5,6 @@ use App\Http\Controllers\ProfileController;
 
 require __DIR__.'/admin_auth.php';
 
-
 require __DIR__.'/auth.php';
 
 Route::middleware('auth')->group(function () {

@@ -3,7 +3,7 @@
 
 @section('content')
 
-    @if (session('status') === 'logged-in')
+    {{-- @if (session('status') === 'logged-in')
         <div class="alert alert-success">
             You have logged in successfully!
         </div>
@@ -11,7 +11,7 @@
         <div class="alert alert-danger">
             Something went wrong!
         </div>
-    @endif
+    @endif --}}
 
     <div class="content-wrapper">
         <div class="page-header">

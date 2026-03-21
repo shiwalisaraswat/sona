@@ -25,14 +25,21 @@
     <link rel="stylesheet" href="{{ asset('public/css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('public/css/style.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('public/css/developer.css') }}" type="text/css">
+
+    <!-- Toastr for this page(Order is important) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <!-- End Toastr for this page -->
 </head>
 
 <body>
     <!-- Page Preloder -->
-    <div id="preloder">
+    {{-- <div id="preloder">
         <div class="loader"></div>
-    </div>
+    </div> --}}
 
+    @include('elements.toastr_flash')
     
     @include('elements.top_header')
 

@@ -17,7 +17,7 @@
                     @csrf
                     @method('patch')
 
-                    @if (session('status') === 'profile-updated')
+                    {{-- @if (session('status') === 'profile-updated')
                         <div class="alert alert-success">
                             Profile updated successfully!
                         </div>
@@ -25,7 +25,7 @@
                         <div class="alert alert-danger">
                             Something went wrong!
                         </div>
-                    @endif
+                    @endif --}}
 
                     <div class="form-group">
                         <label for="exampleInputName1">Name</label>
