@@ -54,8 +54,8 @@
                                     </td>
                                     <td> {{ date('d-m-Y', strtotime($record->created_at)) }} </td>
                                     <td> 
-                                        <a href="{{ route('admin.room_types.edit',$record->id) }}" class="icon me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-										<a href="{{ route('admin.room_types.destroy',$record->id) }}" class="icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash-o"></i></a>
+                                        <a href="{{ route('admin.room_types.edit',$record->id) }}" class="icon edit_icon me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
+										<a href="{{ route('admin.room_types.destroy',$record->id) }}" class="icon delete_icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash-o"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

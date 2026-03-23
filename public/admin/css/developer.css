@@ -24,6 +24,14 @@ select.form-select {
     font-size: 1.5rem;
 }
 
+.edit_icon{
+    color: #6a008a;
+}
+
+.delete_icon{
+    color: #E91E63;
+}
+
 
 table.custom-table {
     table-layout: fixed;
@@ -59,3 +67,29 @@ table.custom-table th:nth-child(3), td:nth-child(3) { width: 35%; }   /* Descrip
 }
 
 
+/* Success Toastr - using your success gradient */
+#toast-container > .toast-success {
+    background-image: linear-gradient(to right, #84d9d2, #07cdae) !important;
+    background-color: #07cdae !important; /* Fallback */
+    opacity: 0.95; /* Control transparency here (0.0 to 1.0) */
+    box-shadow: 0 4px 15px rgba(7, 205, 174, 0.3); /* Optional: Matching glow */
+}
+
+/* Error/Danger Toastr - using your danger gradient */
+#toast-container > .toast-error {
+    background-image: linear-gradient(to right, #ffbf96, #fe7096) !important;
+    background-color: #fe7096 !important; /* Fallback */
+    opacity: 0.95;
+    box-shadow: 0 4px 15px rgba(254, 112, 150, 0.3);
+}
+
+/* General overrides to ensure text is visible and layout is clean */
+#toast-container > .toast {
+    color: #ffffff !important;
+    border: none;
+}
+
+/* Ensure icons don't look weird on gradients */
+.toast-success .toast-message, .toast-error .toast-message {
+    font-weight: 500;
+}
