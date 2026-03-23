@@ -85,6 +85,8 @@
     <script src="{{ asset('public/admin/assets/js/file-upload.js') }}"></script>
     <script src="{{ asset('public/admin/assets/js/typeahead.js') }}"></script>
     <script src="{{ asset('public/admin/assets/js/select2.js') }}"></script>
+
+    <script src="{{ asset('public/admin//js/developer.js') }}"></script>
     <!-- End custom js for this page -->
   </body>
 </html>

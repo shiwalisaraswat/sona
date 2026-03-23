@@ -5,3 +5,57 @@
 .contact-form input, .booking-form {
     color: #000 !important;
 }
+
+select.form-select {
+    color: #000 !important;
+}
+
+
+.tooltip-inner {
+    background-color: #000 !important;
+    color: #fff;
+}
+
+.tooltip.bs-tooltip-top .tooltip-arrow::before {
+    border-top-color: #000 !important;
+}
+
+.icon {
+    font-size: 1.5rem;
+}
+
+
+table.custom-table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Specific column sizing */
+table.custom-table th:nth-child(3), td:nth-child(3) { width: 35%; }   /* Description */
+
+.desc-cell {
+    vertical-align: top;
+    /* This prevents the text from pushing the table width */
+    overflow: hidden; 
+}
+
+.desc-cell .content-wrapper {
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal; /* Forces text to wrap */
+    background: none;
+    padding: 0;
+}
+
+.d-none {
+    display: none !important;
+}
+
+/* Force sub-menu links to ONLY be active if Laravel says so */
+.sidebar .nav .sub-menu .nav-item .nav-link:not(.active) {
+    color: #aeaeae !important; /* Your default text color */
+    background: transparent !important;
+}
+
+
