@@ -79,119 +79,25 @@
         </div>
     </div>
 
+@push('scripts')
+    <script>
+        console.log('Page specific JS');
+    </script>
+@endpush
+
+@pushOnce('scripts', 'soft_delete-js')
+<script src="{{ asset('public/admin/js/soft_delete.js') }}"></script>
+@endPushOnce
+
+@pushOnce('scripts', 'restore-js')
+<script src="{{ asset('public/admin/js/restore.js') }}"></script>
+@endPushOnce
+
+@pushOnce('scripts', 'force_delete-js')
+<script src="{{ asset('public/admin/js/force_delete.js') }}"></script>
+@endPushOnce
+
 <script>
-$(document).on('click', '.soft_delete_icon', function() {
-    let url = $(this).data('url');
-    let $row = $(this).closest('tr');
-
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "This action can be undone!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'Cancel',
-        // Disable default SWAL button styles
-        buttonsStyling: false, 
-        // Inject your custom gradient classes
-        customClass: {
-            confirmButton: 'btn btn-gradient-danger mx-2', 
-            cancelButton: 'btn btn-gradient-secondary mx-2'
-        }
-    }).then((result) => {
-        if (result.isConfirmed) {
-            $.ajax({
-                url: url,
-                type: 'DELETE',
-                data: { _token: "{{ csrf_token() }}" },
-                success: function(res) {
-                    if (res.success) {
-                        $row.fadeOut(500, function() { $(this).remove(); });
-                        toastr.success(res.message);
-                    }
-                },
-                error: function() {
-                    toastr.error("Could not delete this item.");
-                }
-            });
-        }
-    });
-});
-
-$(document).on('click', '.restore_icon', function() {
-    let url = $(this).data('url');
-
-    Swal.fire({
-        title: 'Restore this item?',
-        text: "It will appear back in your active list.",
-        icon: 'info',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, Restore!',
-        cancelButtonText: 'Cancel',
-        // Disable default SWAL button styles
-        buttonsStyling: false, 
-        // Inject your custom gradient classes
-        customClass: {
-            confirmButton: 'btn btn-gradient-danger mx-2', 
-            cancelButton: 'btn btn-gradient-secondary mx-2'
-        }
-    }).then((result) => {
-        if (result.isConfirmed) {
-            $.ajax({
-                url: url,
-                type: 'POST', // We use POST for state changes
-                data: { 
-                    _token: "{{ csrf_token() }}" 
-                },
-                success: function(res) {
-                    if (res.success) {
-                        toastr.success(res.message);
-                        // Reload to refresh the action buttons (Edit/Delete)
-                        setTimeout(() => {
-                            location.reload();
-                        }, 1000);
-                    }
-                },
-                error: function() {
-                    toastr.error("Failed to restore record.");
-                }
-            });
-        }
-    });
-});
-
-$(document).on('click', '.force_delete_icon', function() {
-    let url = $(this).data('url');
-    let $row = $(this).closest('tr');
-
-    Swal.fire({
-        title: 'PERMANENT DELETE?',
-        text: "This will remove the record from the database FOREVER!",
-        icon: 'error', // Error icon for dangerous actions
-        showCancelButton: true,
-        confirmButtonText: 'Yes, Wipe it!',
-        buttonsStyling: false,
-        customClass: {
-            confirmButton: 'btn btn-danger mx-2',
-            cancelButton: 'btn btn-light mx-2'
-        }
-    }).then((result) => {
-        if (result.isConfirmed) {
-            $.ajax({
-                url: url,
-                type: 'DELETE',
-                data: { _token: "{{ csrf_token() }}" },
-                success: function(res) {
-                    if (res.success) {
-                        $row.fadeOut(500, function() { $(this).remove(); });
-                        toastr.error(res.message); // Using error toast for "Deleted"
-                    }
-                }
-            });
-        }
-    });
-});
-
 $(document).on('click', '.status-toggle', function() {
     let $badge = $(this);
     let id = $badge.data('id');
@@ -227,4 +133,5 @@ $(document).on('click', '.status-toggle', function() {
     });
 });
 </script>
+
 @endsection

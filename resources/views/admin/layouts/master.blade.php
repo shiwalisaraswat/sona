@@ -4,6 +4,12 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- 
+      CSRF Token for AJAX Requests:
+      Laravel requires a CSRF token to validate POST/PUT/DELETE requests.
+      We expose the token in a meta tag so JavaScript (external files) can access it.
+    -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Purple Admin</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('public/admin/assets/vendors/mdi/css/materialdesignicons.min.css') }}">
@@ -22,9 +28,33 @@
     <link rel="stylesheet" href="{{ asset('public/admin/css/developer.css') }}">
     <!-- End layout styles -->
 
+    <!-- 
+      Load jQuery ONLY ONCE:
+      Multiple jQuery versions can override previous configurations like ajaxSetup,
+      causing CSRF token to not be sent → resulting in "CSRF token mismatch" error.
+    -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      /*
+        Global AJAX Setup:
+        - Automatically attaches CSRF token in every AJAX request header.
+        - Prevents the need to manually pass _token in each request.
+        - withCredentials ensures session cookies are sent (important for CSRF validation).
+      */
+      $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+          },
+          xhrFields: {
+              withCredentials: true  // ensures Laravel session cookie is sent with request
+          }
+      });
+    </script>
+
     <!-- Toastr for this page(Order is important) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- IMPORTANT: Do NOT load jQuery again. It will override ajaxSetup and break CSRF handling. -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- End Toastr for this page -->
 
@@ -67,6 +97,7 @@
       <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
+
     <!-- plugins:js -->
     <script src="{{ asset('public/admin/assets/vendors/js/vendor.bundle.base.js') }}"></script>
     <!-- endinject -->
@@ -92,5 +123,8 @@
 
     <script src="{{ asset('public/admin/js/developer.js') }}"></script>
     <!-- End custom js for this page -->
+
+    @stack('scripts') {{-- Scripts will be injected here --}}
+
   </body>
 </html>
