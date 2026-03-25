@@ -1,18 +1,21 @@
 @extends('admin.layouts.master')
 @section('title', 'Room Type')
 
+
 @section('breadcrumb')
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Room Type</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Edit Room Type</li>
-    </ol>
+    <li class="breadcrumb-item">
+        <a href="{{ route('admin.dashboard') }}">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active">
+        Room Types
+    </li>
 @endsection
 
 @section('content')
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Room Type List</h4>
+                {{-- <h4 class="card-title">Room Type List</h4> --}}
                 <table class="table table-striped custom-table">
                     <thead>
                         <tr>

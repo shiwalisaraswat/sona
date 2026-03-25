@@ -2,10 +2,15 @@
 @section('title', 'Create Room Type')
 
 @section('breadcrumb')
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Room Type</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Edit Room Type</li>
-    </ol>
+    <li class="breadcrumb-item">
+        <a href="{{ route('admin.dashboard') }}">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="{{ route('admin.room_types.index') }}">Room Types</a>
+    </li>
+    <li class="breadcrumb-item active">
+        Create
+    </li>
 @endsection
 
 @section('content')
