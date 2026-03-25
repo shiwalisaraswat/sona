@@ -124,3 +124,47 @@ table.custom-table th:nth-child(3), td:nth-child(3) { width: 35%; }   /* Descrip
 }
 
 
+/* Ensure the pagination container is a flex row */
+.dataTables_paginate .pagination {
+    display: flex !important;
+    list-style: none;
+    padding-left: 0;
+}
+
+/* Force numbers to be visible */
+.dataTables_paginate .page-link {
+    color: #6a008a !important; /* Your Purple Theme */
+    background-color: #fff !important;
+    border: 1px solid #9a55ff !important;
+    display: block;
+}
+
+/* Fix for active page (e.g., page 1) */
+.dataTables_paginate .page-item.active .page-link {
+    /* Use 'background' for gradients, not 'background-color' */
+    background: linear-gradient(to right, #da8cff, #9a55ff) !important;
+    
+    /* Match the border to the darker side of the gradient */
+    border-color: #9a55ff !important;
+    
+    color: white !important;
+    
+    /* Optional: Removes the blue outline/glow in some Bootstrap versions */
+    box-shadow: none !important;
+}
+
+/* Optional: Smooth hover effect for the other buttons */
+.dataTables_paginate .page-link:hover {
+    background-color: #f8f9fa !important;
+    color: #9a55ff !important;
+    border-color: #9a55ff !important;
+}
+
+/* Ensure arrows/text aren't hidden */
+.dataTables_paginate .page-item.disabled .page-link {
+    color: #ccc !important;
+}
+
+.text-purple{
+    color: #6a008a;
+}
