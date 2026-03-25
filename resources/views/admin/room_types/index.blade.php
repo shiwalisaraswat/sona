@@ -55,7 +55,7 @@
                                     <td> {{ date('d-m-Y', strtotime($record->created_at)) }} </td>
                                     <td> 
                                         <a href="{{ route('admin.room_types.edit',$record->id) }}" class="icon edit_icon me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-										<a href="{{ route('admin.room_types.destroy',$record->id) }}" class="icon delete_icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash-o"></i></a>
+										<a href="#" class="icon delete_icon" data-url="{{ route('admin.room_types.destroy',$record->id) }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="fa fa-trash-o"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -73,6 +73,44 @@
     </div>
 
 <script>
+$(document).on('click', '.delete_icon', function() {
+    let url = $(this).data('url');
+    let $row = $(this).closest('tr');
+
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "This action cannot be undone!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'Cancel',
+        // Disable default SWAL button styles
+        buttonsStyling: false, 
+        // Inject your custom gradient classes
+        customClass: {
+            confirmButton: 'btn btn-gradient-danger mx-2', 
+            cancelButton: 'btn btn-gradient-secondary mx-2' // Or create a custom gray gradient class
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                data: { _token: "{{ csrf_token() }}" },
+                success: function(res) {
+                    if (res.success) {
+                        $row.fadeOut(500, function() { $(this).remove(); });
+                        toastr.success(res.message);
+                    }
+                },
+                error: function() {
+                    toastr.error("Could not delete this item.");
+                }
+            });
+        }
+    });
+});
+
 $(document).on('click', '.status-toggle', function() {
     let $badge = $(this);
     let id = $badge.data('id');

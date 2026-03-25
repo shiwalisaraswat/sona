@@ -28,6 +28,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- End Toastr for this page -->
 
+    <!-- SweetAlert for this page(Order is important) -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- End SweetAlert for this page -->
+
     <link rel="shortcut icon" href="{{ asset('public/admin/assets/images/favicon.png') }}" />
   </head>
   <body>
@@ -86,7 +90,7 @@
     <script src="{{ asset('public/admin/assets/js/typeahead.js') }}"></script>
     <script src="{{ asset('public/admin/assets/js/select2.js') }}"></script>
 
-    <script src="{{ asset('public/admin//js/developer.js') }}"></script>
+    <script src="{{ asset('public/admin/js/developer.js') }}"></script>
     <!-- End custom js for this page -->
   </body>
 </html>

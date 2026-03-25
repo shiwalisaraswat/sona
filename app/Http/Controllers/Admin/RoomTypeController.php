@@ -95,9 +95,17 @@ class RoomTypeController extends Controller
         $record = RoomType::findOrFail($id);
         
         if($record->delete()){
-            return back()->with(['success'=>'RoomType deleted successfully.']);
+            // return back()->with(['success'=>'RoomType deleted successfully.']);
+            return response()->json([
+                'success' => true,
+                'message' => 'RoomType deleted successfully!'
+            ]);
         }else {
-            return back()->with(['error'=>'Unable to delete this record.']);
+            return response()->json([
+                'success' => false,
+                'message' => 'Unable to delete this record.'
+            ]);
+            // return back()->with(['error'=>'Unable to delete this record.']);
         }
     }
 
