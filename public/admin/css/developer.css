@@ -28,8 +28,16 @@ select.form-select {
     color: #6a008a;
 }
 
-.delete_icon{
+.soft_delete_icon{
+    color: #f96868;
+}
+
+.force_delete_icon{
     color: #E91E63;
+}
+
+.restore_icon{
+    color: #46c35f;
 }
 
 
@@ -114,3 +122,5 @@ table.custom-table th:nth-child(3), td:nth-child(3) { width: 35%; }   /* Descrip
     background: linear-gradient(89deg, #5e7188, #3e4b5b) !important;
     color: white !important;
 }
+
+

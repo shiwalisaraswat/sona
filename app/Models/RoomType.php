@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class RoomType extends Model
 {
-
     const ACTIVE = 'Active';
     const INACTIVE = 'Inactive';
+
+    use SoftDeletes;
 
     // use \Kyslik\ColumnSortable\Sortable;
 
@@ -19,6 +21,8 @@ class RoomType extends Model
     protected $fillable = [
         'name', 'description', 'status'
     ];
+
+    protected $dates = ['deleted_at'];
 
     public static function getRoomTypesListing(){
         $get_room_types_listing = RoomType::pluck('name','id')->toArray();

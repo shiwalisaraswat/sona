@@ -14,8 +14,9 @@ class RoomTypeController extends Controller
      */
     public function index(Request $request, RoomType $roomType)
     {
-        $records = $roomType;
+        $records = $roomType->withTrashed();
         // ->sortable(['id' => 'desc']);
+        // onlyTrashed()
 
         if($request->query('search')){
             $records = $records->where(function($q) use ($request) {
@@ -98,7 +99,7 @@ class RoomTypeController extends Controller
             // return back()->with(['success'=>'RoomType deleted successfully.']);
             return response()->json([
                 'success' => true,
-                'message' => 'RoomType deleted successfully!'
+                'message' => 'RoomType moved to trash!'
             ]);
         }else {
             return response()->json([
@@ -106,6 +107,45 @@ class RoomTypeController extends Controller
                 'message' => 'Unable to delete this record.'
             ]);
             // return back()->with(['error'=>'Unable to delete this record.']);
+        }
+    }
+
+    // Optional: Restore
+    public function restore(string $id)
+    {
+        // Add withTrashed() so Laravel can "see" the deleted record
+        $record = RoomType::withTrashed()->findOrFail($id);
+        if($record->restore()){
+            return response()->json([
+                'success' => true,
+                'message' => 'RoomType restored!'
+            ]);
+        }else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Unable to restore this record.'
+            ]);
+        }
+    }
+
+    public function forceDelete(string $id)
+    {
+        // Use withTrashed() so you don't get a 404 if trying to delete something already in trash, 
+        // withTrashed is required to find the record first!
+        $record = RoomType::withTrashed()->findOrFail($id);
+
+        // $record->forceDelete(); // This removes it from DB forever
+
+        if($record->forceDelete()){ // This removes it from DB forever
+            return response()->json([
+                'success' => true,
+                'message' => 'Record wiped from database!'
+            ]);
+        }else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Unable to wipe this record.'
+            ]);
         }
     }
 
@@ -119,16 +159,16 @@ class RoomTypeController extends Controller
         $record->status = ($record->status == 'Active') ? 'Inactive' : 'Active';
         if($record->save()){
             return response()->json([
-            'success' => true,
-            'new_status' => $record->status,
-            'message' => 'Status changed to <strong>'.$record->status.'</strong>'
-        ]);
+                'success' => true,
+                'new_status' => $record->status,
+                'message' => 'Status changed to <strong>'.$record->status.'</strong>'
+            ]);
         } else {
             return response()->json([
-            'success' => false,
-            'new_status' => $record->status,
-            'message' => 'Unable to change status'
-        ]);
+                'success' => false,
+                'new_status' => $record->status,
+                'message' => 'Unable to change status'
+            ]);
         }
         return response()->json(['error' => $error,'message' => $message]);
     }

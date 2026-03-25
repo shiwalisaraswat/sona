@@ -21,6 +21,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->string('profile_pic')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::create('admin_password_reset_tokens', function (Blueprint $table) {
@@ -37,5 +38,8 @@ return new class extends Migration
     {
         Schema::dropIfExists('admins');
         Schema::dropIfExists('admin_password_reset_tokens');
+        Schema::table('room_types', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 };

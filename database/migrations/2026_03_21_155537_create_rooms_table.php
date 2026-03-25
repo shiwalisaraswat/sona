@@ -18,6 +18,7 @@ return new class extends Migration
             $table->decimal('price', 10, 2);
             $table->enum('status', ['Available', 'Booked', 'Maintenance'])->default('Available');
             $table->timestamps();
+            $table->softDeletes(); // This adds the 'deleted_at' column
         });
     }
 
@@ -26,6 +27,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('rooms', function (Blueprint $table) {
+            // Good practice: drop the column if rolling back
+            $table->dropSoftDeletes();
+        });
         Schema::dropIfExists('rooms');
     }
 };

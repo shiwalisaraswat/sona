@@ -50,8 +50,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/room-types/store',[RoomTypeController::class, 'store'])->name('room_types.store');
         Route::get('/room-types/edit/{id}',[RoomTypeController::class, 'edit'])->name('room_types.edit');
         Route::put('/room-types/update/{id}',[RoomTypeController::class, 'update'])->name('room_types.update');
-        Route::post('/room-types/changeStatus/{id}',[RoomTypeController::class, 'changeStatus'])->name('room_types.changeStatus');
         Route::delete('/room-types/destroy/{id}',[RoomTypeController::class, 'destroy'])->name('room_types.destroy');
+        Route::post('/room-types/restore/{id}',[RoomTypeController::class, 'restore'])->name('room_types.restore');
+        Route::delete('/room-types/force-delete/{id}', [RoomTypeController::class, 'forceDelete'])->name('room_types.force_delete');
+        Route::post('/room-types/change-status/{id}',[RoomTypeController::class, 'changeStatus'])->name('room_types.change_status');
 
     });
 });
