@@ -7,7 +7,7 @@ use App\Http\Requests\Admin\RoomTypeRequest;
 use Illuminate\Http\Request;
 use App\Models\RoomType;
 
-class RoomTypeController extends Controller
+class RoomTypesController extends Controller
 {
     /**
      * Display a listing of the resource.

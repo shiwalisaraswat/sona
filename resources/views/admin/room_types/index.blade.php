@@ -21,7 +21,7 @@
                         <tr>
                             <th> # </th>
                             <th> Name </th>
-                            <th> Description </th>
+                            <th class="desc-th"> Description </th>
                             <th> Status </th>
                             <th> Created </th>
                             <th> Action </th>

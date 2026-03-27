@@ -59,7 +59,35 @@
       </div>
     </li>
     
-
+    <li class="nav-item {{ request()->routeIs('admin.rooms.*') ? 'active' : '' }}">
+      <a class="nav-link" 
+        data-bs-toggle="collapse" 
+        href="#ui-basic" 
+        aria-expanded="{{ request()->routeIs('admin.rooms.*') ? 'true' : 'false' }}">
+        <span class="menu-title">Room</span>
+        <i class="menu-arrow"></i>
+        <i class="fa fa-s15"></i>
+      </a>
+      
+      <div class="collapse {{ request()->routeIs('admin.rooms.*') ? 'show' : '' }}" id="ui-basic">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            {{-- STRICT CHECK: Only active if exact route match --}}
+            <a class="nav-link {{ $routeName === 'admin.rooms.index' ? 'active' : '' }}" 
+              href="{{ route('admin.rooms.index') }}">
+              Room
+            </a>
+          </li>
+          <li class="nav-item">
+            {{-- STRICT CHECK: Only active if exact route match --}}
+            <a class="nav-link {{ $routeName === 'admin.rooms.create' ? 'active' : '' }}" 
+              href="{{ route('admin.rooms.create') }}">
+              Create
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
     
   </ul>
 </nav>

@@ -47,13 +47,18 @@ table.custom-table {
     border-collapse: collapse;
 }
 
-/* Specific column sizing */
-table.custom-table th:nth-child(3), td:nth-child(3) { width: 35%; }   /* Description */
+/* Specific column sizing - Description*/
+/* table.custom-table th:nth-child(3), td:nth-child(3) { width: 35%; }  */
+
+.desc-th{
+    width: 35%; /* Description */
+}
 
 .desc-cell {
     vertical-align: top;
     /* This prevents the text from pushing the table width */
     overflow: hidden; 
+    width: 35%; /* Description */
 }
 
 .desc-cell .content-wrapper {
