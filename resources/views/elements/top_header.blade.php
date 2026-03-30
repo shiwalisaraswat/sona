@@ -35,7 +35,7 @@
                 </ul>
             </li>
             <li><a href="{{ route('cms.blog') }}">News</a></li>
-            <li><a href="{{ route('cms.contact') }}">Contact</a></li>
+            <li><a href="{{ route('contact.index') }}">Contact</a></li>
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>

@@ -34,16 +34,35 @@
                     </div>
                 </div>
                 <div class="col-lg-7 offset-lg-1">
-                    <form action="#" class="contact-form">
+                    <form action="{{ route('contact.store') }}" method="POST" class="contact-form" autocomplete="off">
+                        @csrf
+
                         <div class="row">
                             <div class="col-lg-6">
-                                <input type="text" placeholder="Your Name">
+                                <input type="text" name="name" placeholder="Your Name" value="{{ auth()->user()->name ?? old('name') }}" {{ auth()->check() ? 'readonly' : '' }}>
+                                @error('name')
+                                    <span class="error-message">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="col-lg-6">
-                                <input type="text" placeholder="Your Email">
+                                <input type="text" name="email" placeholder="Your Email" value="{{ auth()->user()->email ?? old('email') }}" {{ auth()->check() ? 'readonly' : '' }}>
+                                @error('email')
+                                    <span class="error-message">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="col-lg-12">
-                                <textarea placeholder="Your Message"></textarea>
+                                <textarea name="message" placeholder="Your Message">{{ old('message') }}</textarea>
+                                @error('message')
+                                    <span class="error-message">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="col-lg-12">
                                 <button type="submit">Submit Now</button>
                             </div>
                         </div>

@@ -2,6 +2,6 @@
     color: red;
 }
 
-.contact-form input, .booking-form {
+.contact-form input, .contact-form textarea, .booking-form {
     color: #000 !important;
 }
