@@ -23,10 +23,7 @@ class Admin extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'profile_pic'
+        'name', 'email', 'password', 'profile_pic'
     ];
 
     // Append custom attribute
@@ -38,8 +35,7 @@ class Admin extends Authenticatable
      * @var list<string>
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        'password', 'remember_token',
     ];
 
     /**

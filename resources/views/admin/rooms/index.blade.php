@@ -19,8 +19,11 @@
                     <thead>
                         <tr>
                             <th> # </th>
+                            <th> Image </th>
                             <th> Room Type </th>
                             <th> Room Number </th>
+                            <th> Size <br/>(in ft) </th>
+                            <th> Capacity <br/>(Max person) </th>
                             <th> Price </th>
                             <th> Status </th>
                             <th> Created </th>
@@ -33,8 +36,13 @@
                             @foreach($records as $record)
                                 <tr>
                                     <td>{{ $slNo++ }}</td>
+                                    <td>
+                                        <img src="{{ $record->first_image?->image_url ?? asset('public/admin/images/default/placeholder1.png') }}" class="me-2 mb-2" width="100" height="100">
+                                    </td>
                                     <td>{{ $record->room_type->name ?? 'N\A' }}</td>
                                     <td>{{ $record->room_number }}</td>
+                                    <td>{{  $record->room_feature->size ?? 'N\A' }}</td>
+                                    <td>{{ $record->room_feature->capacity ?? 'N\A' }}</td>
                                     <td>{{ $record->price }}</td>
                                     <td>
                                         @php

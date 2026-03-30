@@ -57,8 +57,44 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail3">Status</label>
-                        <select class="form-select" name="status" id="exampleSelectGender">
+                        <label for="size">Size</label>
+                        <input type="text" class="form-control" id="size" name="size" placeholder="Size" value="{{ old('size', $record->size) }}">
+                        @error('size')
+                            <span class="error-message">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="capacity">Capacity</label>
+                        <input type="text" class="form-control" id="capacity" name="capacity" placeholder="Capacity" value="{{ old('capacity', $record->capacity) }}">
+                        @error('capacity')
+                            <span class="error-message">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="bed">Bed</label>
+                        <input type="text" class="form-control" id="bed" name="bed" placeholder="Bed" value="{{ old('bed', $record->bed) }}">
+                        @error('bed')
+                            <span class="error-message">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" name="description" id="description" rows="4" placeholder="Description">{{ old('description', $record->description) }}</textarea>
+                        @error('description')
+                            <span class="error-message">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select class="form-select" name="status" id="status">
                             @php $options = \App\Helpers\CommonHelper::getRoomStatusOption(); @endphp
                             @foreach($options as $key => $value)
                                 <option value="{{ $key }}" {{ old('status', $record->status) == $key ? 'selected' : '' }}>
@@ -67,6 +103,48 @@
                             @endforeach
                         </select>
                         @error('status')
+                            <span class="error-message">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label>File upload</label>
+                        <input type="file" name="images[]" class="file-upload-default" multiple>
+                        <div class="input-group col-xs-12">
+                            <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image" multiple>
+                            <span class="input-group-append">
+                                <button class="file-upload-browse btn btn-gradient-primary py-3" type="button">Upload</button>
+                            </span>
+                        </div>
+                        @error('images.*')
+                            <span class="error-message">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="images">Images</label>
+                        <br/>
+                        @foreach($record->room_images as $image)
+                            <img src="{{ $image->image_url }}" class="me-2 mb-2" width="100" height="100">
+                        @endforeach
+                    </div>
+                    <div class="form-group">
+                        <label>Room Services</label>
+                        <br/>
+                        @php $servicesOptions = \App\Models\Service::getServicesListing(); @endphp
+                        @foreach($servicesOptions as $key => $service)
+                            <div class="form-check form-check-flat form-check-primary">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" name="services[]" value="{{ $key }}" 
+                                    {{ in_array($key, old('services', isset($record) ? $record->services->pluck('id')->toArray() : [])) ? 'checked' : '' }}>
+                                    {{ $service }}
+                                    <i class="input-helper"></i>
+                                </label>
+                            </div>
+                        @endforeach
+                        @error('services.*')
                             <span class="error-message">
                                 <strong>{{ $message }}</strong>
                             </span>

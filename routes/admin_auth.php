@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\RoomTypesController;
 use App\Http\Controllers\Admin\RoomsController;
+use App\Http\Controllers\Admin\ServicesController;
 
 // Admin Default Route
 Route::get('/admin', [App\Http\Controllers\Admin\Auth\AuthenticatedSessionController::class, 'create']);
@@ -67,7 +68,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::delete('/rooms/force-delete/{id}', [RoomsController::class, 'forceDelete'])->name('rooms.force_delete');
         Route::post('/rooms/change-status/{id}',[RoomsController::class, 'changeStatus'])->name('rooms.change_status');
 
-        
+        Route::get('/services', [ServicesController::class, 'index'])->name('services.index');
+        Route::get('/services/create',[ServicesController::class, 'create'])->name('services.create');
+        Route::post('/services/store',[ServicesController::class, 'store'])->name('services.store');
+        Route::get('/services/edit/{id}',[ServicesController::class, 'edit'])->name('services.edit');
+        Route::put('/services/update/{id}',[ServicesController::class, 'update'])->name('services.update');
+        Route::delete('/services/destroy/{id}',[ServicesController::class, 'destroy'])->name('services.destroy');
+        Route::post('/services/restore/{id}',[ServicesController::class, 'restore'])->name('services.restore');
+        Route::delete('/services/force-delete/{id}', [ServicesController::class, 'forceDelete'])->name('services.force_delete');
+        Route::post('/services/change-status/{id}',[ServicesController::class, 'changeStatus'])->name('services.change_status');
+    
+    
     });
 });
 

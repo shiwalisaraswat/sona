@@ -32,14 +32,14 @@
     <li class="nav-item {{ request()->routeIs('admin.room_types.*') ? 'active' : '' }}">
       <a class="nav-link" 
         data-bs-toggle="collapse" 
-        href="#ui-basic" 
+        href="#ui-room_types" 
         aria-expanded="{{ request()->routeIs('admin.room_types.*') ? 'true' : 'false' }}">
         <span class="menu-title">Room Type</span>
         <i class="menu-arrow"></i>
         <i class="fa fa-cube menu-icon"></i>
       </a>
       
-      <div class="collapse {{ request()->routeIs('admin.room_types.*') ? 'show' : '' }}" id="ui-basic">
+      <div class="collapse {{ request()->routeIs('admin.room_types.*') ? 'show' : '' }}" id="ui-room_types">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item">
             {{-- STRICT CHECK: Only active if exact route match --}}
@@ -62,26 +62,52 @@
     <li class="nav-item {{ request()->routeIs('admin.rooms.*') ? 'active' : '' }}">
       <a class="nav-link" 
         data-bs-toggle="collapse" 
-        href="#ui-basic" 
+        href="#ui-rooms" 
         aria-expanded="{{ request()->routeIs('admin.rooms.*') ? 'true' : 'false' }}">
         <span class="menu-title">Room</span>
         <i class="menu-arrow"></i>
         <i class="fa fa-s15"></i>
       </a>
       
-      <div class="collapse {{ request()->routeIs('admin.rooms.*') ? 'show' : '' }}" id="ui-basic">
+      <div class="collapse {{ request()->routeIs('admin.rooms.*') ? 'show' : '' }}" id="ui-rooms">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item">
-            {{-- STRICT CHECK: Only active if exact route match --}}
             <a class="nav-link {{ $routeName === 'admin.rooms.index' ? 'active' : '' }}" 
               href="{{ route('admin.rooms.index') }}">
               Room
             </a>
           </li>
           <li class="nav-item">
-            {{-- STRICT CHECK: Only active if exact route match --}}
             <a class="nav-link {{ $routeName === 'admin.rooms.create' ? 'active' : '' }}" 
               href="{{ route('admin.rooms.create') }}">
+              Create
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="nav-item {{ request()->routeIs('admin.services.*') ? 'active' : '' }}">
+      <a class="nav-link" 
+        data-bs-toggle="collapse" 
+        href="#ui-services" 
+        aria-expanded="{{ request()->routeIs('admin.services.*') ? 'true' : 'false' }}">
+        <span class="menu-title">Service</span>
+        <i class="menu-arrow"></i>
+        <i class="fa fa-cogs"></i>
+      </a>
+      
+      <div class="collapse {{ request()->routeIs('admin.services.*') ? 'show' : '' }}" id="ui-services">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link {{ $routeName === 'admin.services.index' ? 'active' : '' }}" 
+              href="{{ route('admin.services.index') }}">
+              Service
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ $routeName === 'admin.services.create' ? 'active' : '' }}" 
+              href="{{ route('admin.services.create') }}">
               Create
             </a>
           </li>

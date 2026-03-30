@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoomsController;
 
 require __DIR__.'/admin_auth.php';
 
@@ -39,13 +40,7 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('cms.contact');
 
-Route::get('/room-detail', function () {
-    return view('room_detail');
-})->name('cms.room_detail');
+Route::get('/room-detail/{id}', [RoomsController::class, 'detail'])->name('rooms.detail');
 
-Route::get('/rooms', function () {
-    return view('rooms');
-})->name('cms.rooms');
-
-
+Route::get('/rooms', [RoomsController::class, 'index'])->name('rooms.index');
 

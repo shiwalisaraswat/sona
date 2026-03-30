@@ -48,11 +48,11 @@
                             <nav class="mainmenu">
                                 <ul>
                                     <li class="active"><a href="{{ route('home') }}">Home</a></li>
-                                    <li><a href="{{ route('cms.rooms') }}">Rooms</a></li>
+                                    <li><a href="{{ route('rooms.index') }}">Rooms</a></li>
                                     <li><a href="{{ route('cms.about_us') }}">About Us</a></li>
                                     <li><a href="#">Pages</a>
                                         <ul class="dropdown">
-                                            <li><a href="{{ route('cms.room_detail') }}">Room Details</a></li>
+                                            {{--  <li><a href="{{ route('cms.room_detail') }}">Room Details</a></li> --}}
                                             <li><a href="{{ route('cms.blog_detail') }}">Blog Details</a></li>
                                         </ul>
                                     </li>

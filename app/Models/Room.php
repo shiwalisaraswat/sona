@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-// use App\Models\RoomType;
+// use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\{BelongsTo, HasMany, HasOne, BelongsToMany};
 
 class Room extends Model
 {
@@ -32,6 +32,31 @@ class Room extends Model
     public function room_type(): BelongsTo
     {
         return $this->belongsTo(RoomType::class, 'room_type_id');
+    }
+
+    public function room_images()
+    {
+        return $this->hasMany(RoomImage::class);
+    }
+
+    public function first_image()
+    {
+        return $this->hasOne(RoomImage::class)->latestOfMany();
+    }
+
+    public function room_feature()
+    {
+        return $this->hasOne(RoomFeature::class);
+    }
+
+    // public function room_services()
+    // {
+    //     return $this->hasMany(RoomService::class);
+    // }
+
+    public function services(): BelongsToMany
+    {
+        return $this->belongsToMany(Service::class, 'room_services');
     }
 
 }

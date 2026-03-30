@@ -73,9 +73,13 @@ table.custom-table {
     display: none !important;
 }
 
+.sidebar .nav .nav-item .nav-link i {
+    color: #b66dff !important;
+}
+
 /* Force sub-menu links to ONLY be active if Laravel says so */
 .sidebar .nav .sub-menu .nav-item .nav-link:not(.active) {
-    color: #aeaeae !important; /* Your default text color */
+    color: #6610f2 !important; /* Your default text color: #aeaeae */
     background: transparent !important;
 }
 
