@@ -29,6 +29,34 @@
       </a>
     </li>
 
+    <li class="nav-item {{ request()->routeIs('admin.admins.*') ? 'active' : '' }}">
+      <a class="nav-link" 
+        data-bs-toggle="collapse" 
+        href="#ui-admins" 
+        aria-expanded="{{ request()->routeIs('admin.admins.*') ? 'true' : 'false' }}">
+        <span class="menu-title">Admin</span>
+        <i class="menu-arrow"></i>
+        <i class="fa fa-id-card"></i>
+      </a>
+      
+      <div class="collapse {{ request()->routeIs('admin.admins.*') ? 'show' : '' }}" id="ui-admins">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link {{ $routeName === 'admin.admins.index' ? 'active' : '' }}" 
+              href="{{ route('admin.admins.index') }}">
+              Admin
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ $routeName === 'admin.admins.create' ? 'active' : '' }}" 
+              href="{{ route('admin.admins.create') }}">
+              Create
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+
     <li class="nav-item {{ request()->routeIs('admin.room_types.*') ? 'active' : '' }}">
       <a class="nav-link" 
         data-bs-toggle="collapse" 
@@ -113,6 +141,13 @@
           </li>
         </ul>
       </div>
+    </li>
+
+    <li class="nav-item {{ ($routeName == 'admin.contacts.index') ? 'active' : '' }}">
+      <a class="nav-link" href="{{ route('admin.contacts.index') }}">
+        <span class="menu-title">Contact</span>
+        <i class="fa fa-file-text ms-2 me-2"></i>
+      </a>
     </li>
     
   </ul>

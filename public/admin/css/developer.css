@@ -132,6 +132,10 @@ table.custom-table {
     color: white !important;
 }
 
+.badge-rounded{
+    border-radius: 30px !important;
+}
+
 
 /* Ensure the pagination container is a flex row */
 .dataTables_paginate .pagination {

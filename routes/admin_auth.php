@@ -13,9 +13,11 @@ use App\Http\Controllers\Admin\Auth\PasswordController;
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\AdminsController;
 use App\Http\Controllers\Admin\RoomTypesController;
 use App\Http\Controllers\Admin\RoomsController;
 use App\Http\Controllers\Admin\ServicesController;
+use App\Http\Controllers\Admin\ContactsController;
 
 // Admin Default Route
 Route::get('/admin', [App\Http\Controllers\Admin\Auth\AuthenticatedSessionController::class, 'create']);
@@ -45,6 +47,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Change Password Routes
         Route::get('/change-password', [PasswordController::class, 'edit'])->name('password.edit');
         Route::put('/change-password', [PasswordController::class, 'update'])->name('password.update');
+
+        // Admin Routes
+        Route::get('/admins', [AdminsController::class, 'index'])->name('admins.index');
+        Route::get('/admins/create',[AdminsController::class, 'create'])->name('admins.create');
+        Route::post('/admins/store',[AdminsController::class, 'store'])->name('admins.store');
+        Route::get('/admins/edit/{id}',[AdminsController::class, 'edit'])->name('admins.edit');
+        Route::put('/admins/update/{id}',[AdminsController::class, 'update'])->name('admins.update');
+        Route::delete('/admins/destroy/{id}',[AdminsController::class, 'destroy'])->name('admins.destroy');
+        Route::post('/admins/restore/{id}',[AdminsController::class, 'restore'])->name('admins.restore');
+        Route::delete('/admins/force-delete/{id}', [AdminsController::class, 'forceDelete'])->name('admins.force_delete');
+        Route::post('/admins/change-status/{id}',[AdminsController::class, 'changeStatus'])->name('admins.change_status');
 
         // RoomType Routes
         Route::get('/room-types', [RoomTypesController::class, 'index'])->name('room_types.index');
@@ -78,7 +91,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::delete('/services/force-delete/{id}', [ServicesController::class, 'forceDelete'])->name('services.force_delete');
         Route::post('/services/change-status/{id}',[ServicesController::class, 'changeStatus'])->name('services.change_status');
     
-    
+        // Room Routes
+        Route::get('/contacts', [ContactsController::class, 'index'])->name('contacts.index');
+
+
     });
 });
 

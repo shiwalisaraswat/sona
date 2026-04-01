@@ -62,6 +62,11 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- End SweetAlert for this page -->
 
+    <!-- Fancybox for this page(Order is important) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
+    <!-- End Fancybox for this page -->
+
     <link rel="shortcut icon" href="{{ asset('public/admin/assets/images/favicon.png') }}" />
   </head>
   <body>

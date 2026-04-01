@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -15,6 +16,8 @@ class Admin extends Authenticatable
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
+    use SoftDeletes;
+
     protected $guard = 'admin'; // added custom guard "admin"
 
     /**
@@ -23,8 +26,10 @@ class Admin extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name', 'email', 'password', 'profile_pic'
+        'role', 'name', 'email', 'password', 'profile_pic'
     ];
+
+    protected $dates = ['deleted_at'];
 
     // Append custom attribute
     protected $appends = ['profile_pic_url'];

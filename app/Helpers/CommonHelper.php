@@ -9,6 +9,10 @@ Use DB;
 
 class CommonHelper {
 
+	const SUPER_ADMIN = "super_admin";
+	const SUB_ADMIN = "sub_admin";
+	const STAFF = "staff";
+
 	const ACTIVE = 'Active';
 	const INACTIVE = 'Inactive';
 
@@ -24,6 +28,14 @@ class CommonHelper {
 			'50' => '50',
 			'70' => '70',
 			'100' => '100'
+		];
+	}
+
+	public static function getAdminRoleOption(){
+		return [
+			// self::SUPER_ADMIN   => self::SUPER_ADMIN,
+			self::SUB_ADMIN => self::SUB_ADMIN,
+			self::STAFF => self::STAFF
 		];
 	}
 

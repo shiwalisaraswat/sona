@@ -17,19 +17,9 @@
                     @csrf
                     @method('patch')
 
-                    {{-- @if (session('status') === 'profile-updated')
-                        <div class="alert alert-success">
-                            Profile updated successfully!
-                        </div>
-                    @else
-                        <div class="alert alert-danger">
-                            Something went wrong!
-                        </div>
-                    @endif --}}
-
                     <div class="form-group">
-                        <label for="exampleInputName1">Name</label>
-                        <input type="text" class="form-control" id="exampleInputName1" name="name" placeholder="Name" value="{{ old('name', $admin->name) }}">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{ old('name', $admin->name) }}">
                         @error('name')
                             <span class="error-message">
                                 <strong>{{ $message }}</strong>
@@ -37,8 +27,8 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail3">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail3" name="email" placeholder="Email" value="{{ old('email', $admin->email) }}">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ old('email', $admin->email) }}">
                         @error('email')
                             <span class="error-message">
                                 <strong>{{ $message }}</strong>

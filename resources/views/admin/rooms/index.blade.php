@@ -37,7 +37,11 @@
                                 <tr>
                                     <td>{{ $slNo++ }}</td>
                                     <td>
-                                        <img src="{{ $record->first_image?->image_url ?? asset('public/admin/images/default/placeholder1.png') }}" class="me-2 mb-2" width="100" height="100">
+                                        <div class="gallery">
+                                            <a href="{{ $record->first_image?->image_url ?? asset('public/admin/images/default/placeholder1.png') }}" data-fancybox="gallery">
+                                                <img src="{{ $record->first_image?->image_url ?? asset('public/admin/images/default/placeholder1.png') }}" class="me-2 mb-2" width="100" height="100" />
+                                            </a>
+                                        </div>
                                     </td>
                                     <td>{{ $record->room_type->name ?? 'N\A' }}</td>
                                     <td>{{ $record->room_number }}</td>
